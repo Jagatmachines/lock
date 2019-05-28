@@ -26,14 +26,14 @@ import SingleSignOnNotice from '../../connection/enterprise/single_sign_on_notic
 import { hasOnlyClassicConnections, isSSOEnabled } from '../classic';
 import * as i18n from '../../i18n';
 
-function shouldRenderTabs(m) {
+export function shouldRenderTabs(m) {
   if (isSSOEnabled(m)) return false;
   if (l.hasSomeConnections(m, 'database')) return hasScreen(m, 'signUp');
   if (l.hasSomeConnections(m, 'social') && hasInitialScreen(m, 'signUp'))
     return hasScreen(m, 'signUp');
 }
 
-const Component = ({ i18n, model }) => {
+const Component = ({ i18n, model, submitButton }) => {
   const sso = isSSOEnabled(model);
   const onlySocial = hasOnlyClassicConnections(model, 'social');
 
@@ -97,11 +97,13 @@ const Component = ({ i18n, model }) => {
   return (
     <div>
       {ssoNotice}
-      {tabs}
+      {/* tabs */}
       <div>
-        {social}
-        {separator}
         {login}
+        {separator}
+        {submitButton}
+
+        {social}
       </div>
     </div>
   );

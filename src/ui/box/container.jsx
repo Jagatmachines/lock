@@ -5,6 +5,9 @@ import { CloseButton } from './button';
 import * as l from '../../core/index';
 import * as c from '../../field/index';
 import { swap, updateEntity } from '../../store/index';
+import { shouldRenderTabs } from '../../engine/classic/login';
+import LoginSignUpTabs from '../../connection/database/login_sign_up_tabs';
+import { signUpLink } from '../../connection/database/index';
 
 const badgeSvg = (
   <svg focusable="false" width="58px" height="21px" viewBox="0 0 462 168">
@@ -204,9 +207,21 @@ export default class Container extends React.Component {
       className += ' auth0-lock-with-tabs';
     }
 
+    const tabData = shouldRenderTabs(contentProps.model) && (
+      <LoginSignUpTabs
+        key="loginsignup"
+        lock={contentProps.model}
+        loginLabel={contentProps.i18n.str('loginLabel')}
+        signUpLink={signUpLink(contentProps.model)}
+        signUpLabel={contentProps.i18n.str('signUpLabel')}
+      />
+    );
+
     return (
       <div className={className} lang={this.props.language}>
         {overlay}
+        {tabData}
+
         <div className="auth0-lock-center">
           <form className="auth0-lock-widget" method="post" onSubmit={::this.handleSubmit}>
             {avatar && <Avatar imageUrl={avatar} />}
@@ -287,9 +302,9 @@ export const defaultProps = (Container.defaultProps = {
   isMobile: false,
   isSubmitting: false,
   language: 'en',
-  logo: `${
-    isFileProtocol ? 'https:' : ''
-  }//cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png`,
+  logo: `${isFileProtocol
+    ? 'https:'
+    : ''}//cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png`,
   primaryColor: '#ea5323',
   showBadge: true,
   scrollGlobalMessagesIntoView: true

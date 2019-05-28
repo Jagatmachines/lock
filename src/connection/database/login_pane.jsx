@@ -64,7 +64,6 @@ export default class LoginPane extends React.Component {
 
     return (
       <div>
-        {header}
         {fieldPane}
         <PasswordPane
           i18n={i18n}
@@ -73,6 +72,7 @@ export default class LoginPane extends React.Component {
           hidden={!showPassword}
         />
         {dontRememberPassword}
+        {header}
       </div>
     );
   }

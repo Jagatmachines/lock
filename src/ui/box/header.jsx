@@ -34,7 +34,7 @@ class Welcome extends React.Component {
     return (
       <div className="auth0-lock-header-welcome">
         {imageUrl && img}
-        {welcome}
+        {/* welcome */}
       </div>
     );
   }

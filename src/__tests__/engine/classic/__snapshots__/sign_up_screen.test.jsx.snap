@@ -86,7 +86,7 @@ exports[`SignUpScreen renders SingleSignOnNotice when SSO is enabled and has scr
 </div>
 `;
 
-exports[`SignUpScreen renders SocialButtonsPane when has social connections 1`] = `
+exports[`SignUpScreen renders  when has social connections 1`] = `
 <div>
   <div>
     <div

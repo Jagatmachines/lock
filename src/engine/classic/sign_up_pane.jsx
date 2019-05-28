@@ -64,11 +64,12 @@ export default class SignUpPane extends React.Component {
 
     return (
       <div>
-        {header}
+        {fields}
         <EmailPane i18n={i18n} lock={model} placeholder={emailInputPlaceholder} />
         {usernamePane}
         {passwordPane}
-        {fields}
+
+        {header}
       </div>
     );
   }

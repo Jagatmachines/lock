@@ -72,11 +72,11 @@ const Component = ({ i18n, model }) => {
   return (
     <div>
       {ssoNotice}
-      {tabs}
+      {/* tabs */}
       <div>
-        {social}
-        {separator}
         {db}
+        {separator}
+        {social}
       </div>
     </div>
   );

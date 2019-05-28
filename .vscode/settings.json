@@ -10,5 +10,6 @@
   },
   "editor.formatOnSave": false,
   "prettier.printWidth": 100,
-  "prettier.singleQuote": true
+  "prettier.singleQuote": true,
+  "deepscan.enable": true
 }

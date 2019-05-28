@@ -293,7 +293,21 @@ export default class Chrome extends React.Component {
                     <div className="auth0-lock-body-content">
                       <div className="auth0-lock-content">
                         <div className="auth0-lock-form">
-                          <Content focusSubmit={::this.focusSubmit} {...contentProps} />
+                          <Content
+                            focusSubmit={::this.focusSubmit}
+                            {...contentProps}
+                            submitButton={
+                              <SubmitButton
+                                color={primaryColor}
+                                disabled={disableSubmitButton}
+                                screenName={screenName}
+                                contentProps={contentProps}
+                                label={submitButtonLabel}
+                                ref={el => (this.submitButton = el)}
+                                display={shouldShowSubmitButton ? 'block' : 'none'}
+                              />
+                            }
+                          />
                         </div>
                       </div>
                       {terms && <small className="auth0-lock-terms">{terms}</small>}
@@ -311,15 +325,7 @@ export default class Chrome extends React.Component {
             causing the page to send a POST request to `window.location.href`
             with all the form data.
          */}
-          <SubmitButton
-            color={primaryColor}
-            disabled={disableSubmitButton}
-            screenName={screenName}
-            contentProps={contentProps}
-            label={submitButtonLabel}
-            ref={el => (this.submitButton = el)}
-            display={shouldShowSubmitButton ? 'block' : 'none'}
-          />
+
           {auxiliaryPane && (
             <TransitionGroup>
               <CSSTransition
